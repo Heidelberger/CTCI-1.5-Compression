@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace CTCI_1._5_Compression
     {
         static void Main(string[] args)
         {
-            PrintHeaderMsg(1, 5, "Replace Spaces");
+            PrintHeaderMsg(1, 5, "Compression");
 
             string string1 = "aabcccccaaaqqqqqqqqqqqqq";
             Console.WriteLine("Original:        " + string1);
@@ -27,6 +28,8 @@ namespace CTCI_1._5_Compression
 
         private static void compress_array(string string1)
         {
+            Stopwatch sw = Stopwatch.StartNew();
+            
             if (string1.Length == 0)
                 return;
 
@@ -75,17 +78,23 @@ namespace CTCI_1._5_Compression
                 charArray[array_cursor++] = char.Parse((count - (temp * 10)).ToString());
             }
 
+            sw.Stop();
+            
             Console.WriteLine(    "Array:           " + new string(charArray));
             if ( charArray.Length < string1.Length)
                 Console.WriteLine("                 Compressed string is smaller than the original!");
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
+            Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
+            Console.WriteLine("                 82 Bytes");
 
             Console.WriteLine();
         }
 
         private static void compress_stringbuilder(string string1)
         {
+            Stopwatch sw = Stopwatch.StartNew();
+
             if (string1.Length == 0)
                 return;
 
@@ -113,12 +122,16 @@ namespace CTCI_1._5_Compression
             }
             compressed.Append( lastchar + count.ToString() ); // handle last character
 
+            sw.Stop();
+
             Console.WriteLine(    "StringBuilder:   " + compressed);
             if (compressed.Length < string1.Length)
                 Console.WriteLine("                 Compressed string is smaller than the original!");
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
-
+            Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
+            Console.WriteLine("                 166 Bytes");
+            
             Console.WriteLine();
         }
 
@@ -165,10 +178,14 @@ namespace CTCI_1._5_Compression
                 length += 3;
 
             return length;
+
+            
         }
 
         private static void compress_concat(string string1)
         {
+            Stopwatch sw = Stopwatch.StartNew();
+
             if (string1.Length == 0)
                 return;
 
@@ -193,12 +210,16 @@ namespace CTCI_1._5_Compression
             }
             compressed += lastchar + count.ToString(); // handle last character
 
+            sw.Stop();
+
             Console.WriteLine(    "Concat:          " + compressed);
             if (compressed.Length < string1.Length)
                 Console.WriteLine("                 Compressed string is smaller than the original!");
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
-
+            Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
+            Console.WriteLine("                 2632 Bytes");
+            
             Console.WriteLine();
         }
 
