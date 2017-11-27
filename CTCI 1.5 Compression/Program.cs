@@ -86,7 +86,7 @@ namespace CTCI_1._5_Compression
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
             Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
-            Console.WriteLine("                 82 Bytes");
+            Console.WriteLine("                 82 Bytes"); // according to VS performance analyzer
 
             Console.WriteLine();
         }
@@ -130,8 +130,8 @@ namespace CTCI_1._5_Compression
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
             Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
-            Console.WriteLine("                 166 Bytes");
-            
+            Console.WriteLine("                 166 Bytes"); // according to VS performance analyzer
+
             Console.WriteLine();
         }
 
@@ -218,8 +218,8 @@ namespace CTCI_1._5_Compression
             else
                 Console.WriteLine("                 Compressed string is NOT smaller than the original.");
             Console.WriteLine("                 " + sw.ElapsedTicks + " ticks");
-            Console.WriteLine("                 2632 Bytes");
-            
+            Console.WriteLine("                 2632 Bytes"); // according to VS performance analyzer
+
             Console.WriteLine();
         }
 
